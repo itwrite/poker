@@ -46,7 +46,7 @@ class Poker implements PokerInterface
 
     function __construct($hasKings = false)
     {
-        $this->resetCards($hasKings);
+        $this->reset($hasKings);
     }
 
     /**
@@ -117,7 +117,7 @@ class Poker implements PokerInterface
     /**
      * 重置所有牌
      * @param bool $hasKings
-     * @return mixed|void
+     * @return $this
      * itwri 2020/7/4 12:12
      */
     public function reset($hasKings = false)
