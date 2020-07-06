@@ -6,7 +6,7 @@
  * Time: 13:51
  */
 
-namespace Jasmine\Component\Poker\card;
+namespace Jasmine\Component\Poker;
 
 
 /**

@@ -6,7 +6,7 @@
  * Time: 13:52
  */
 
-namespace Jasmine\Component\Poker\card;
+namespace Jasmine\Component\Poker;
 
 
 class CardType{

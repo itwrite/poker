@@ -14,10 +14,5 @@
         "psr-4": {
             "Jasmine\\Component\\Poker\\": "src/"
         }
-    },
-    "autoload-dev": {
-        "psr-4": {
-            "Tests\\": "tests/"
-        }
     }
 }

@@ -8,12 +8,6 @@
 
 namespace Jasmine\Component\Poker;
 
-use Jasmine\Component\Poker\card\Card;
-use Jasmine\Component\Poker\card\CardInterface;
-use Jasmine\Component\Poker\card\CardType;
-
-require_once("card/Card.php");
-require_once("card/CardType.php");
 
 /**
  * 扑克牌，共54张牌（含大小王）
