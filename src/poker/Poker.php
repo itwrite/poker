@@ -9,6 +9,7 @@
 namespace Poker;
 
 use Poker\card\Card;
+use Poker\card\CardInterface;
 use Poker\card\CardType;
 
 require_once("card/Card.php");
@@ -42,6 +43,9 @@ class Poker implements PokerInterface
      */
     private $cardTypes = array(CardType::diamond, CardType::club, CardType::heart, CardType::spade);
 
+    /**
+     * @var int
+     */
     protected $kingValue = 100;
 
     function __construct($hasKings = false)
@@ -80,7 +84,8 @@ class Poker implements PokerInterface
     {
         if (count($cards) > 0) {
             $maxCard = $cards[0];
-            for ($i = 1; $i < count($cards); $i++) {
+            $count = count($cards);
+            for ($i = 1; $i < $count; $i++) {
                 $card = $cards[$i];
                 if ($card instanceof Card) {
                     if ($card->compareWith($maxCard) > 0) {
@@ -101,7 +106,8 @@ class Poker implements PokerInterface
     {
         if (count($cards) > 0) {
             $minCard = $cards[0];
-            for ($i = 1; $i < count($cards); $i++) {
+            $count = count($cards);
+            for ($i = 1; $i < $count; $i++) {
                 $card = $cards[$i];
                 if ($card instanceof Card) {
                     if ($card->compareWith($minCard) < 0) {
@@ -159,6 +165,19 @@ class Poker implements PokerInterface
         return array_pop($this->cards);
     }
 
+    /**
+     * @return array
+     * itwri 2020/7/6 12:39
+     */
+    public function toArray(){
+        $result = [];
+        foreach ($this->cards as $card) {
+            if($card instanceof CardInterface){
+                $result[] = $card->toArray();
+            }
+        }
+        return $result;
+    }
 }
 
 

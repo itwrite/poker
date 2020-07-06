@@ -61,4 +61,11 @@ interface PokerInterface
      * itwri 2020/7/3 17:37
      */
     public function getTheMinCard(array $cards);
+
+    /**
+     * 转成数组
+     * @return mixed
+     * itwri 2020/7/6 12:39
+     */
+    public function toArray();
 }
