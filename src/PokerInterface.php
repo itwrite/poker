@@ -6,7 +6,7 @@
  * Time: 17:26
  */
 
-namespace Poker;
+namespace Jasmine\Component\Poker;
 
 
 interface PokerInterface

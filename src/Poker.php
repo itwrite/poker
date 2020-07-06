@@ -6,11 +6,11 @@
  * Time: 13:01
  */
 
-namespace Poker;
+namespace Jasmine\Component\Poker;
 
-use Poker\card\Card;
-use Poker\card\CardInterface;
-use Poker\card\CardType;
+use Jasmine\Component\Poker\card\Card;
+use Jasmine\Component\Poker\card\CardInterface;
+use Jasmine\Component\Poker\card\CardType;
 
 require_once("card/Card.php");
 require_once("card/CardType.php");
