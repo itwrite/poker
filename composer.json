@@ -1,26 +1,26 @@
 {
-    "name": "itwri/poker",
-    "license": "library",
-    "authors": [
-        {
-            "name": "itwrite",
-            "email": "990881086@qq.com"
-        }
-    ],
-    "require": {
-        "php": "^7.0"
-    },
-    "autoload": {
-        "psr-4": {
-            "Poker\\": "src/poker"
-        }
-    },
-    "autoload-dev": {
-        "classmap": [
-            "tests/"
-        ],
-        "psr-4": {
-            "Poker\\Tests\\": "tests/"
-        }
+  "name": "itwri/poker",
+  "license": "library",
+  "authors": [
+    {
+      "name": "itwrite",
+      "email": "990881086@qq.com"
     }
+  ],
+  "require": {
+    "php": "^7.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "Poker\\": "src/poker"
+    }
+  },
+  "autoload-dev": {
+    "classmap": [
+      "tests/"
+    ],
+    "psr-4": {
+      "Tests\\":"tests"
+    }
+  }
 }
