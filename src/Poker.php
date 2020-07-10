@@ -35,7 +35,11 @@ class Poker implements PokerInterface
      * 所有牌色
      * @var array
      */
-    private $cardTypes = array(CardType::diamond, CardType::club, CardType::heart, CardType::spade);
+    private $cardTypes = array(
+        CardType::diamond   =>['icon'=>'♦','color'=>'red'],
+        CardType::club      =>['icon'=>'♣','color'=>'black'],
+        CardType::heart     =>['icon'=>'♥','color'=>'red'],
+        CardType::spade     =>['icon'=>'♠','color'=>'black']);
 
     /**
      * @var int
@@ -128,7 +132,7 @@ class Poker implements PokerInterface
         //初始化A~K
         foreach ($this->cardNames as $i => $name) {
             $value = $i + 1;
-            foreach ($this->cardTypes as $j => $type) {
+            foreach ($this->cardTypes as $type => $val) {
                 $this->cards[] = new Card($name, $value, $type);
             }
         }
