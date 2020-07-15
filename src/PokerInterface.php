@@ -29,11 +29,10 @@ interface PokerInterface
 
     /**
      * 重置所有牌
-     * @param bool $hasKings
      * @return mixed
      * itwri 2020/7/4 12:12
      */
-    public function reset($hasKings = false);
+    public function reset();
 
     /**
      * 发牌用到，每一张都是取出

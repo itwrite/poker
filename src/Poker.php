@@ -46,9 +46,12 @@ class Poker implements PokerInterface
      */
     protected $kingValue = 100;
 
+    protected $hasKings = false;
+
     function __construct($hasKings = false)
     {
-        $this->reset($hasKings);
+        $this->hasKings = $hasKings;
+        $this->reset();
     }
 
     /**
@@ -68,6 +71,7 @@ class Poker implements PokerInterface
      */
     function doWash()
     {
+        $this->reset();
         shuffle($this->cards);
         return $this;
     }
@@ -124,7 +128,7 @@ class Poker implements PokerInterface
      * @return $this
      * itwri 2020/7/4 12:12
      */
-    public function reset($hasKings = false)
+    public function reset()
     {
         //重置所有版
         $this->cards = [];
@@ -133,20 +137,17 @@ class Poker implements PokerInterface
         foreach ($this->cardNames as $i => $name) {
             $value = $i + 1;
             foreach ($this->cardTypes as $type => $val) {
-                $this->cards[] = new Card($name, $value, $type);
+                $this->cards[] = new Card($name.$val['icon'], $value, $type);
             }
         }
 
         /**
          * 初始化大小王
          */
-        if ($hasKings == true) {
+        if ($this->hasKings == true) {
             $this->cards[] = new Card('King', $this->kingValue, CardType::diamond);//小王
             $this->cards[] = new Card('King', $this->kingValue, CardType::spade);//大王
         }
-
-        //洗版
-        $this->doWash();
 
         return $this;
     }
