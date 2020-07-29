@@ -6,7 +6,7 @@
  * Time: 13:01
  */
 
-namespace Jasmine\Component\Poker;
+namespace Jasmine\Poker;
 
 
 /**
@@ -29,23 +29,23 @@ class Poker implements PokerInterface
      * 所有牌名
      * @var array
      */
-    private $cardNames = array('A', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K');
+    protected $cardNames = array('A', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K');
 
     /**
      * 所有牌色
      * @var array
      */
-    private $cardTypes = array(
-        CardType::diamond   =>['icon'=>'♦','color'=>'red'],
-        CardType::club      =>['icon'=>'♣','color'=>'black'],
-        CardType::heart     =>['icon'=>'♥','color'=>'red'],
-        CardType::spade     =>['icon'=>'♠','color'=>'black']);
+    protected $cardTypes = array(Card::TYPE_DIAMOND, Card::TYPE_CLUB, Card::TYPE_HEART, Card::TYPE_SPADE);
 
     /**
      * @var int
      */
     protected $kingValue = 100;
 
+    /**
+     * 是否需要大小王
+     * @var bool 
+     */
     protected $hasKings = false;
 
     function __construct($hasKings = false)
@@ -130,14 +130,14 @@ class Poker implements PokerInterface
      */
     public function reset()
     {
-        //重置所有版
+        //重置所有牌
         $this->cards = [];
 
         //初始化A~K
         foreach ($this->cardNames as $i => $name) {
             $value = $i + 1;
-            foreach ($this->cardTypes as $type => $val) {
-                $this->cards[] = new Card($name.$val['icon'], $value, $type);
+            foreach ($this->cardTypes as $type) {
+                $this->cards[] = new Card($name, $value, $type);
             }
         }
 
@@ -145,8 +145,8 @@ class Poker implements PokerInterface
          * 初始化大小王
          */
         if ($this->hasKings == true) {
-            $this->cards[] = new Card('King', $this->kingValue, CardType::diamond);//小王
-            $this->cards[] = new Card('King', $this->kingValue, CardType::spade);//大王
+            $this->cards[] = new Card('King', $this->kingValue, Card::TYPE_CLUB);//小王
+            $this->cards[] = new Card('King', $this->kingValue, Card::TYPE_SPADE);//大王
         }
 
         return $this;
@@ -168,10 +168,11 @@ class Poker implements PokerInterface
      * @return array
      * itwri 2020/7/6 12:39
      */
-    public function toArray(){
+    public function toArray()
+    {
         $result = [];
         foreach ($this->cards as $card) {
-            if($card instanceof CardInterface){
+            if ($card instanceof CardInterface) {
                 $result[] = $card->toArray();
             }
         }

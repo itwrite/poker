@@ -6,7 +6,7 @@
  * Time: 13:51
  */
 
-namespace Jasmine\Component\Poker;
+namespace Jasmine\Poker;
 
 
 /**
@@ -20,17 +20,32 @@ class Card implements CardInterface
      * 牌名
      * @var string
      */
-    private $name = '';
+    protected $name = '';
 
     /**
      * @var int
      */
-    private $type = CardType::diamond;
+    protected $type = self::TYPE_DIAMOND;
 
     /**
      * @var int
      */
-    private $value = 1;
+    protected $value = 1;
+
+    /**
+     * @var string
+     */
+    protected $icon = [];
+
+    /**
+     * @var array 
+     */
+    protected $icons = [
+        self::TYPE_DIAMOND   =>['icon'=>'♦','color'=>'red'],
+        self::TYPE_CLUB      =>['icon'=>'♣','color'=>'black'],
+        self::TYPE_HEART     =>['icon'=>'♥','color'=>'red'],
+        self::TYPE_SPADE     =>['icon'=>'♠','color'=>'black']
+    ];
 
     /**
      * Card constructor.
@@ -38,11 +53,23 @@ class Card implements CardInterface
      * @param $value
      * @param $type
      */
-    function __construct($name, $value, $type = CardType::diamond)
+    function __construct($name, $value, $type = self::TYPE_DIAMOND)
     {
         $this->name = $name;
         $this->value = $value;
         $this->type = $type;
+        $this->icon = $this->toIcon($type);
+    }
+
+
+
+    /**
+     * @param int $type
+     * @return mixed|string
+     * itwri 2020/7/29 11:08
+     */
+    protected function toIcon($type = self::diamond){
+        return isset(self::$icons[$type]) ? self::$icons[$type] : '';
     }
 
     /**
@@ -70,6 +97,15 @@ class Card implements CardInterface
     function getType()
     {
         return $this->type;
+    }
+
+    /**
+     * @return mixed|string
+     * itwri 2020/7/29 11:20
+     */
+    function getIcon()
+    {
+        return $this->icon;
     }
 
     /**
@@ -106,7 +142,8 @@ class Card implements CardInterface
         return [
             'name' => $this->getName(),
             'value' => $this->getValue(),
-            'type' => $this->getType()
+            'type' => $this->getType(),
+            'icon' => $this->getIcon()
         ];
     }
 }
