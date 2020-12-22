@@ -35,16 +35,16 @@ class Card implements CardInterface
     /**
      * @var string
      */
-    protected $icon = [];
+    protected $icon = '';
 
     /**
-     * @var array 
+     * @var array
      */
     protected $icons = [
-        self::TYPE_DIAMOND   =>['icon'=>'♦','color'=>'red'],
-        self::TYPE_CLUB      =>['icon'=>'♣','color'=>'black'],
-        self::TYPE_HEART     =>['icon'=>'♥','color'=>'red'],
-        self::TYPE_SPADE     =>['icon'=>'♠','color'=>'black']
+        self::TYPE_DIAMOND   =>'♦',
+        self::TYPE_CLUB      =>'♣',
+        self::TYPE_HEART     =>'♥',
+        self::TYPE_SPADE     =>'♠'
     ];
 
     /**
@@ -55,21 +55,21 @@ class Card implements CardInterface
      */
     function __construct($name, $value, $type = self::TYPE_DIAMOND)
     {
-        $this->name = $name;
-        $this->value = $value;
-        $this->type = $type;
-        $this->icon = $this->toIcon($type);
+        $this->setName($name);
+        $this->setValue($value);
+        $this->setType($type);
+        $this->setIcon(isset(self::$icons[$type]) ? self::$icons[$type] : '');
     }
 
-
-
     /**
-     * @param int $type
-     * @return mixed|string
-     * itwri 2020/7/29 11:08
+     * @param $name
+     * @return $this|mixed
+     * itwri 2020/12/22 11:10
      */
-    protected function toIcon($type = self::diamond){
-        return isset(self::$icons[$type]) ? self::$icons[$type] : '';
+    public function setName($name)
+    {
+        $this->name = $name;
+        return $this;
     }
 
     /**
@@ -82,6 +82,17 @@ class Card implements CardInterface
     }
 
     /**
+     * @param $value
+     * @return $this|mixed
+     * itwri 2020/12/22 11:10
+     */
+    public function setValue($value)
+    {
+        $this->value = $value;
+        return $this;
+    }
+
+    /**
      * 获取卡牌的值
      * @return int
      */
@@ -91,12 +102,33 @@ class Card implements CardInterface
     }
 
     /**
+     * @param $type
+     * @return $this|mixed
+     * itwri 2020/12/22 11:10
+     */
+    public function setType($type)
+    {
+       $this->type = $type;
+       return $this;
+    }
+
+    /**
      * 获取卡牌的类型
      * @return int
      */
     function getType()
     {
         return $this->type;
+    }
+
+    /**
+     * @param mixed $icon
+     * @return mixed|string
+     * itwri 2020/7/29 11:08
+     */
+    public function setIcon($icon){
+        $this->icon = $icon;
+        return $this;
     }
 
     /**
@@ -130,7 +162,7 @@ class Card implements CardInterface
     }
 
     /**
-     * Desc:
+     * Desc: 转成数组
      * User: itwri
      * Date: 2019/1/30
      * Time: 14:53
