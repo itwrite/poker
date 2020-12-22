@@ -15,8 +15,10 @@ use PHPUnit\Framework\TestCase;
 class PockerTest extends TestCase
 {
 
-    function testPlay(){
+    function testPockerCards(){
         $pocker = new Poker(1);
-        print_r($pocker->toArray());
+        $cards = $pocker->toArray();
+
+        $this->assertEquals(true,count($cards) == 54);
     }
 }
