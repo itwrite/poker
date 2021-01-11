@@ -18,7 +18,7 @@
             "Jasmine\\Poker\\": "src/"
         },
         "exclude-from-classmap": [
-            "/Tests/"
+            "/tests/"
         ]
     }
 }

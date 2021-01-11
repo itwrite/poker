@@ -19,6 +19,7 @@ class PockerTest extends TestCase
         $pocker = new Poker(1);
         $cards = $pocker->toArray();
 
+        print_r($cards);
         $this->assertEquals(true,count($cards) == 54);
     }
 }
