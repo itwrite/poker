@@ -145,8 +145,8 @@ class Poker implements PokerInterface
          * 初始化大小王
          */
         if ($this->hasKings == true) {
-            $this->cards[] = new Card('King', $this->kingValue, Card::TYPE_CLUB);//小王
-            $this->cards[] = new Card('King', $this->kingValue, Card::TYPE_SPADE);//大王
+            $this->cards[] = new Card('King1', $this->kingValue, Card::TYPE_CLUB);//小王
+            $this->cards[] = new Card('King2', $this->kingValue, Card::TYPE_SPADE);//大王
         }
 
         return $this;
