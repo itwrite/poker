@@ -82,7 +82,7 @@ class Poker implements PokerInterface
      * @param array $cards
      * @return Card
      */
-    public static function getTheMaxCard(Array $cards)
+    public static function findTheMaxCard(Array $cards)
     {
         if (count($cards) > 0) {
             $maxCard = $cards[0];
@@ -104,7 +104,7 @@ class Poker implements PokerInterface
      * @param array $cards
      * @return Card
      */
-   public static function getTheMinCard(Array $cards)
+   public static function findTheMinCard(Array $cards)
     {
         if (count($cards) > 0) {
             $minCard = $cards[0];

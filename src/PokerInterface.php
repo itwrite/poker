@@ -50,7 +50,7 @@ interface PokerInterface
      * @return mixed
      * itwri 2020/7/3 17:37
      */
-    public static function getTheMaxCard(array $cards);
+    public static function findTheMaxCard(array $cards);
 
     /**
      * 提供对外的功能
@@ -59,7 +59,7 @@ interface PokerInterface
      * @return mixed
      * itwri 2020/7/3 17:37
      */
-    public static function getTheMinCard(array $cards);
+    public static function findTheMinCard(array $cards);
 
     /**
      * 转成数组
