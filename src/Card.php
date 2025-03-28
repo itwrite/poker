@@ -40,7 +40,7 @@ class Card implements CardInterface
     /**
      * @var array
      */
-    protected $icons = [
+    protected static $icons = [
         self::TYPE_DIAMOND   =>'♦',
         self::TYPE_CLUB      =>'♣',
         self::TYPE_HEART     =>'♥',
